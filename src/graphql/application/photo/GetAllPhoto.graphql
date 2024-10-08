@@ -1,0 +1,16 @@
+query GetAllPhoto {
+    getAllPhotos {
+        id,
+        comment,
+        link,
+        user {
+            id,
+            firstName,
+            lastName
+        },
+        year {
+            id,
+            year
+        }
+    }
+}

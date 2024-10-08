@@ -1,0 +1,3 @@
+query GetAllUserParticipate {
+  getAllUserParticipate {id, email, firstName, lastName, isParticipatingThisYear}
+}

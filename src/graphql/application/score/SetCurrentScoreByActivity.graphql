@@ -1,0 +1,20 @@
+mutation SetCurrentScoreByActivity($dto: [SetCurrentScoreByActivityDto!]!) {
+    setCurrentScoreByActivity(dto: $dto) {
+        id
+        user {
+            id
+            firstName
+        }
+        year {
+            id
+            year
+        }
+        aperitif
+        entreeFroide
+        soupe
+        entreeChaude
+        sorbet
+        plat
+        dessert
+    }
+}
