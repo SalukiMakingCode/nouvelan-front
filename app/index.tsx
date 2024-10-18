@@ -12,6 +12,7 @@ import UiText from '../src/components/ui-kit/typography/UiText';
 import {useLoginLazyQuery} from '../src/graphql';
 import useAuthentication from '../src/hooks/useAuthentication';
 import useFormValidation, {FieldValidation, FieldValidationRuleType} from '../src/hooks/useFormValidation';
+import * as Font from 'expo-font';
 
 const formValidation: FieldValidation<'email' | 'password'>[] = [
     {field: 'email', rules: [{type: FieldValidationRuleType.MANDATORY}, {type: FieldValidationRuleType.EMAIL}]},
@@ -19,6 +20,20 @@ const formValidation: FieldValidation<'email' | 'password'>[] = [
 ];
 
 export default function Page() {
+    const [fontsLoaded, setFontsLoaded] = useState(false);
+
+    const loadFonts = async () => {
+        await Font.loadAsync({
+            'LuckiestGuy-Regular': require('../assets/fonts/LuckiestGuy-Regular.ttf'),
+            'Josefin-Regular': require('../assets/fonts/JosefinSans-VariableFont_wght.ttf'),
+        });
+        setFontsLoaded(true);
+    };
+
+    useEffect(() => {
+        loadFonts();
+    }, []);
+
     const authenticate = useAuthentication();
     const [{validateForm}, validations] = useFormValidation(formValidation);
     const [form, setForm] = useState({email: '', password: ''});
@@ -67,7 +82,7 @@ export default function Page() {
                     backgroundColor: '#140e32'
                 }}>
                     <VStack w="90%" alignSelf="center">
-                        <UiText textAlign="center" template={'h1'}>
+                        <UiText textAlign="center" template={'h1'} style={{fontFamily: 'LuckiestGuy-Regular'}}>
                             Coupe du monde des petites souris
                         </UiText>
                         <UiTextField

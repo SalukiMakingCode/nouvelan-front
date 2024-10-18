@@ -12,12 +12,12 @@ const Dish = (props: Props) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.containerTitle}>
-                <Image source={(imageUrl)} style={styles.image}/>
-                <UiText template={"h1"} textAlign={'center'} color={'black'} style={styles.containerTitleH1}>
-                    {props.props.title}
-                </UiText>
-            </View>
+
+            <Image source={{uri: imageUrl}} style={styles.image}/>
+
+            <UiText template={"h1"} textAlign={'center'} color={'black'}>
+                {props.props.title}
+            </UiText>
 
             <UiText template={"h3"} textAlign={'center'} color={'black'} mt={15} mb={15} w={320}>
                 {props.props.name}
@@ -37,18 +37,7 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         marginLeft: 5,
-    },
-    containerTitle: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#e1b286',
-        flex: 1,
-        width: 320,
-    },
-    containerTitleH1: {
-        flex: 1,
-        marginBottom: 0,
-        textAlignVertical: 'center',
+        alignSelf: 'center',
     },
 });
 

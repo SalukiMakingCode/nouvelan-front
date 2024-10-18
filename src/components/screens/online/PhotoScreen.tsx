@@ -1,11 +1,32 @@
 import Menu from "../../ui-kit/menu/menu";
 import UiText from "../../ui-kit/typography/UiText";
 import usePhotosByYear from "../../../hooks/usePhotoByYear";
-import {Image, ScrollView, StyleSheet, View} from 'react-native';
+import {Image, Pressable, ScrollView, StyleSheet, View} from 'react-native';
 import BannerTitle from "../../ui-kit/bannertitle/bannerTitle";
+import useArticlePhotoUploader from "../../../hooks/data/useArticlePhotoUploader";
+import usePhotoGallery from "../../../hooks/data/usePhotoGallery";
+import {useEffect, useState} from "react";
 
 const PhotoScreen = () => {
     const {photosByYear, loading, error} = usePhotosByYear();
+    const {uploadArticlePhotos, isUploading} = useArticlePhotoUploader();
+    const {
+        pickPhotoFromGallery, takePhotoWithCamera, photoUri, imageLoading, resetPhotoUri,
+    } = usePhotoGallery();
+    const [isMenuAddPhotoOpen, setIsMenuAddPhotoOpen] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+            if (!photoUri) {
+                return;
+            }
+
+            setIsMenuAddPhotoOpen(false);
+
+            await uploadArticlePhotos(photoUri);
+            //await refetchArticle(); todo refresh
+        })();
+    }, [photoUri]);
 
     if (loading) {
         return <UiText>Loading...</UiText>;
@@ -20,9 +41,10 @@ const PhotoScreen = () => {
             <Menu/>
             <ScrollView>
                 <BannerTitle title={'Les photos'} image={'souris-photo.png'}/>
-                <View style={styles.addPhotoContainer}>
-                    <Image source={{uri: '../../../../assets/img/add-photo.png'}} style={styles.addPhotoImage}/>
-                </View>
+                <Pressable style={styles.addPhotoContainer} onPress={pickPhotoFromGallery}>
+                    <Image source={{uri: 'https://hdmnetwork-cdn.s3.fr-par.scw.cloud/nouvelan/img/add-photo.png'}}
+                           style={styles.addPhotoImage}/>
+                </Pressable>
                 <View style={styles.containerPhoto}>
                     {Object.keys(photosByYear)
                         .sort((a, b) => Number(b) - Number(a))
@@ -36,7 +58,7 @@ const PhotoScreen = () => {
                                     {photosByYear[yearId].map((photo) => (
                                         <View key={photo.id} style={styles.photoItem}>
                                             <Image
-                                                source={{uri: '../../../../assets/img/photo/' + photo.link}}
+                                                source={{uri: 'https://hdmnetwork-cdn.s3.fr-par.scw.cloud/nouvelan/img/photo/' + photo.link}}
                                                 style={styles.photo}
                                             />
                                             <UiText>{photo.comment}</UiText>

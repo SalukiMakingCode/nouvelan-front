@@ -7,11 +7,11 @@ interface Props {
 }
 
 const BannerTitle = ({title, image}: Props) => {
-    const imageUrl = "uri : '../../../../assets/img/" + image;
+    const imageUrl = "https://hdmnetwork-cdn.s3.fr-par.scw.cloud/nouvelan/img/" + image;
     return (
         <View style={styles.containerScreen}>
-            <Image source={imageUrl} style={styles.photoTitle}/>
-            <UiText color={'black'} fontSize={24}>{title}</UiText>
+            <Image source={{uri: imageUrl}} style={styles.photoTitle}/>
+            <UiText color={'black'} fontSize={24} style={{fontFamily: 'LuckiestGuy-Regular'}}>{title}</UiText>
         </View>
     )
 }

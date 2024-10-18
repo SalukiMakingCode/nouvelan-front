@@ -22,7 +22,7 @@ interface TemplateProps {
 const templates = {
     h1: {
         color: 'white',
-        fontSize: 22,
+        fontSize: 19,
         fontWeight: 'bold',
         marginBottom: 10,
     },
@@ -99,10 +99,9 @@ const templates = {
         },
     },
     menuOption: {
-        textAlign: 'right',
-        marginRight: 10,
+        textAlign: 'center',
         marginBottom: 10,
-        fontSize: 18,
+        fontSize: 11,
     },
     container: {
         backgroundColor: '#FFDAB9',

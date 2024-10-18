@@ -8,8 +8,7 @@ import UiButton from "../ui-kit/form/UiButton";
 
 const EventComponent = ({epreuve}: { epreuve: EpreuvePlatDto }) => {
     const imageUrl = imageMapper[epreuve.image];
-    const videoUrl = "../../../assets/video/" + epreuve.video;
-
+    const videoUrl = "https://hdmnetwork-cdn.s3.fr-par.scw.cloud/nouvelan/video/" + epreuve.video;
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -48,7 +47,7 @@ const EventComponent = ({epreuve}: { epreuve: EpreuvePlatDto }) => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTitle}>
-                <Image source={(imageUrl)} style={styles.image}/>
+                <Image source={{uri: imageUrl}} style={styles.image}/>
                 <UiText template={"h1"} textAlign={'center'} color={'black'} style={styles.containerTitleH1}>
                     {epreuve.title}
                 </UiText>
@@ -61,10 +60,11 @@ const EventComponent = ({epreuve}: { epreuve: EpreuvePlatDto }) => {
             {epreuve.video && (
                 <View style={styles.containerVideo}>
                     <Video
-                        source={videoUrl}
+                        source={{uri: videoUrl}}
                         useNativeControls
-                        style={{alignSelf: 'center', width: 320, aspectRatio: 16 / 9}}
-                        resizeMode="center"
+                        isMuted={false}
+                        style={{width: '100%', aspectRatio: 16 / 9}}
+                        resizeMode="cover"
                     />
                 </View>
             )}
@@ -105,7 +105,9 @@ const styles = StyleSheet.create({
     },
     containerVideo: {
         width: '100%',
+        height: 200,
         alignItems: 'center',
+        justifyContent: 'center',
         marginBottom: 10,
     }
 });

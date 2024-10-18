@@ -24,22 +24,22 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "androidStatusBar": {
-    },
+    "androidStatusBar": {},
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "api": "http://localhost:3030/graphql",
-      "api-websocket": "ws://localhost:3030/graphql",
-      //"api": "PROD_URL",
-      //"api-websocket": "PROD_URL",
+      "api": "http://192.168.0.12:3030/graphql",
+      "api-websocket": "ws://192.168.0.12:3030/graphql",
       "androidVersionCode": "1",
       "iosVersionCode": "1",
       "release": "1.0.0",
       "eas": {
         "projectId": ""
       }
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
