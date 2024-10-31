@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "boilerplateapp",
+    "slug": "boilerplateapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "boilerplateapp",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "androidStatusBar": {},
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "api": "http://192.168.0.12:3030/graphql",
+      "api-websocket": "ws://192.168.0.12:3030/graphql",
+      "api-rest": "http://192.168.0.12:3030",
+      "androidVersionCode": "1",
+      "iosVersionCode": "1",
+      "release": "1.0.0"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}

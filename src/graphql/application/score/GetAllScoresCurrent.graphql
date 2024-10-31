@@ -1,0 +1,21 @@
+query GetAllScoresCurrent {
+  getAllScoresCurrent {
+    id
+    user {
+      id
+      firstName
+      login
+    }
+    year {
+      id
+      year
+    }
+    aperitif
+    dessert
+    entreeChaude
+    entreeFroide
+    plat
+    sorbet
+    soupe
+  }
+}

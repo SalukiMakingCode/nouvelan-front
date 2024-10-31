@@ -1,0 +1,11 @@
+query getAllPhotos {
+    getAllPhotos {
+        id
+        imageFileId
+      userId
+      yearId
+     	year{year}
+      user{firstName, lastName}
+      image{uri}
+    }
+}

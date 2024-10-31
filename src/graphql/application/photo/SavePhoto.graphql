@@ -1,0 +1,6 @@
+mutation savePhoto($dto: SavePhotoDto!) {
+    savePhoto(dto: $dto) {
+        id
+
+    }
+}
